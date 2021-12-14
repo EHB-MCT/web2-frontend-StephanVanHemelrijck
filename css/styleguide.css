@@ -1,0 +1,18 @@
+:root {
+    /* Colors */
+    --white: #ffffff; /* RGB VALUES (255,255,255) */
+    --grey: #dddddd; /* RGB VALUES (221,221,221) */
+    --orange: #ec5e3d; /* RGB VALUES (236,94,61) */
+    --blue-hover: #51c5d6; /* RGB VALUES (81,197,214) */
+    --blue: #2eade3; /* RGB VALUES (46,173,227) */
+    --black: #000000; /* RGB VALUES (0,0,0) */
+    /* Font */
+    font-family: "Quicksand";
+    font-size: 1rem;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap");
+/* @font-face {
+    font-family: "Agency";
+    src: url("/assets/fonts/Agency/Agency.ttf");
+} */
