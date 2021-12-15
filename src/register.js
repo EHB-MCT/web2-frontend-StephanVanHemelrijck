@@ -32,7 +32,7 @@ async function createUser() {
         }
         // .slice used to delete the "," for the last element
         const finalHTML = htmlString + htmlInputsMissing.slice(0, htmlInputsMissing.length - 2) + htmlStringEnd;
-        document.getElementById("missing-message-container").innerHTML = finalHTML;
+        document.getElementById("message-container").innerHTML = finalHTML;
         return;
     }
 
@@ -53,10 +53,11 @@ async function createUser() {
             .then((data) => {
                 console.log(data);
                 console.log("account created");
+            })
+            .then((data) => {
+                window.location.href = "../html/home.html";
             });
-
-        window.location.href = "../html/home.html";
     } else {
-        document.getElementById("missing-message-container").innerHTML = `<p id="missing-message">Passwords do not match</p>`;
+        document.getElementById("message-container").innerHTML = `<p id="missing-message">Passwords do not match</p>`;
     }
 }
