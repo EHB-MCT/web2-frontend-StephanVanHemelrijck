@@ -14,7 +14,9 @@ body {
     background-size: cover;
     background-color: var(--blue);
 }
-
+:root {
+    --form-width: 70%;
+}
 main {
     height: calc(100vh - 57px);
     display: flex;
@@ -44,7 +46,7 @@ main div h1 {
 #inputs {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: var(--form-width);
 }
 
 #inputs input {
@@ -74,7 +76,7 @@ main div h1 {
     padding: 10px;
     font-size: 1.25rem;
     text-align: center;
-    width: 70%;
+    width: var(--form-width);
 }
 
 #form {
@@ -94,6 +96,7 @@ main div h1 {
 
 #create,
 main > div > h1 {
+    width: var(--form-width);
     text-decoration: none;
     color: var(--white);
     text-shadow: 1px 1px black;
@@ -113,7 +116,7 @@ main > div > h1 {
     /* font-family: "Agency"; */
 }
 
-#missing-message-container {
+#message-container {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -121,7 +124,7 @@ main > div > h1 {
 }
 
 #missing-message {
-    width: 70%;
+    width: var(--form-width);
     padding: 10px 0;
     text-align: center;
     color: var(--white);

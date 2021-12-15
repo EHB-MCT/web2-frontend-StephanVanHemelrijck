@@ -6,7 +6,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+:root {
+    --form-width: 70%;
+}
 body {
     background-image: url(/assets/img/cycling-outdoor-sunset-art.jpg);
     background-repeat: no-repeat;
@@ -44,7 +46,6 @@ main > div {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    /* background-color: rgba(0, 0, 0, 0.75); */
     width: 40%;
     min-width: 400px;
     /* height: 300px; */
@@ -60,7 +61,7 @@ main div h1 {
 #inputs {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: var(--form-width);
 }
 
 #inputs input {
@@ -88,7 +89,7 @@ main div h1 {
     padding: 10px;
     font-size: 1.25rem;
     text-align: center;
-    width: 70%;
+    width: var(--form-width);
 }
 
 #form {
@@ -102,8 +103,33 @@ main div h1 {
 #login,
 #remember-me,
 main > div > h1 {
-    text-decoration: none;
+    width: var(--form-width);
     color: var(--white);
     text-shadow: 1px 1px black;
     font-weight: 700;
+    text-align: center;
+}
+
+#forgot-password {
+    text-decoration: underline;
+    padding-top: 10px;
+}
+
+#message-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#missing-message,
+#error-message {
+    width: var(--form-width);
+    padding: 10px 0;
+    text-align: center;
+    color: var(--white);
+    text-decoration: none;
+    text-shadow: 1px 1px black;
+    font-weight: 700;
+    font-size: 1.25rem;
 }
