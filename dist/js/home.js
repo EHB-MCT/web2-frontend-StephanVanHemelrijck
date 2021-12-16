@@ -20,13 +20,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/header-dropdown.js":
+/*!********************************!*\
+  !*** ./src/header-dropdown.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"init\": () => (/* binding */ init),\n/* harmony export */   \"toggleDropdown\": () => (/* binding */ toggleDropdown),\n/* harmony export */   \"logOut\": () => (/* binding */ logOut)\n/* harmony export */ });\n/* harmony import */ var _cookie_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cookie.js */ \"./src/cookie.js\");\n\r\n\r\n/* When the user clicks on the button,\r\ntoggle between hiding and showing the dropdown content */\r\nfunction init() {\r\n    // Nav dropdown button\r\n    document.getElementById(\"username-nav\").addEventListener(\"click\", (e) => {\r\n        toggleDropdown();\r\n    });\r\n    // Log Out\r\n    document.getElementById(\"logout\").addEventListener(\"click\", (e) => {\r\n        logOut();\r\n    });\r\n}\r\n\r\nfunction toggleDropdown() {\r\n    document.getElementById(\"myDropdown\").classList.toggle(\"show\");\r\n}\r\n\r\nfunction logOut() {\r\n    console.log(\"logging out\");\r\n    _cookie_js__WEBPACK_IMPORTED_MODULE_0__.deleteCookie(\"username\");\r\n    _cookie_js__WEBPACK_IMPORTED_MODULE_0__.deleteCookie(\"email\");\r\n    _cookie_js__WEBPACK_IMPORTED_MODULE_0__.deleteCookie(\"session_token\");\r\n    window.location.href = \"../html/index.html\";\r\n}\r\n\n\n//# sourceURL=webpack://web2-frontend-stephanvanhemelrijck/./src/header-dropdown.js?");
+
+/***/ }),
+
 /***/ "./src/home.js":
 /*!*********************!*\
   !*** ./src/home.js ***!
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cookie_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cookie.js */ \"./src/cookie.js\");\n\r\n\r\nwindow.onload = function () {\r\n    console.log(document.cookie);\r\n    if (!document.cookie) {\r\n        alert(\"User not logged in, redirecting...\");\r\n        window.location.href = \"../html/index.html\";\r\n    }\r\n    init();\r\n    personalizeHTML();\r\n};\r\n\r\nfunction personalizeHTML() {\r\n    let user = _cookie_js__WEBPACK_IMPORTED_MODULE_0__.getCookie(\"username\");\r\n    // Capitalize username\r\n    let userCapitalCase = user.charAt(0).toUpperCase() + user.slice(1);\r\n    console.log(userCapitalCase);\r\n\r\n    document.getElementById(\"welcome\").innerHTML += \" \" + userCapitalCase + \"!\";\r\n    document.getElementById(\"username-nav\").innerHTML = userCapitalCase;\r\n}\r\n\r\nfunction init() {\r\n    // Nav dropdown button\r\n    document.getElementById(\"username-nav\").addEventListener(\"click\", (e) => {\r\n        console.log(\"klik\");\r\n        toggleDropdown();\r\n    });\r\n}\r\n\r\n/* When the user clicks on the button,\r\ntoggle between hiding and showing the dropdown content */\r\nfunction toggleDropdown() {\r\n    const dropwdown = document.getElementById(\"myDropdown\").classList.toggle(\"show\");\r\n    console.log(dropwdown);\r\n}\r\n\n\n//# sourceURL=webpack://web2-frontend-stephanvanhemelrijck/./src/home.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cookie_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cookie.js */ \"./src/cookie.js\");\n/* harmony import */ var _header_dropdown_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header-dropdown.js */ \"./src/header-dropdown.js\");\n\r\n\r\n\r\nwindow.onload = function () {\r\n    if (!document.cookie) {\r\n        alert(\"User not logged in, redirecting...\");\r\n        window.location.href = \"../html/index.html\";\r\n    }\r\n    _header_dropdown_js__WEBPACK_IMPORTED_MODULE_1__.init();\r\n    personalizeHTML();\r\n};\r\n\r\nfunction personalizeHTML() {\r\n    let user = _cookie_js__WEBPACK_IMPORTED_MODULE_0__.getCookie(\"username\");\r\n    // Capitalize username\r\n    let userCapitalCase = user.charAt(0).toUpperCase() + user.slice(1);\r\n\r\n    // Welcome message\r\n    document.getElementById(\"welcome\").innerHTML += \" \" + userCapitalCase + \"!\";\r\n    // Nav\r\n    document.getElementById(\"username-nav\").innerHTML = userCapitalCase;\r\n}\r\n\n\n//# sourceURL=webpack://web2-frontend-stephanvanhemelrijck/./src/home.js?");
 
 /***/ })
 
