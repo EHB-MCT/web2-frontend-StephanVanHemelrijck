@@ -16,5 +16,5 @@ function personalizeHTML() {
     console.log(userCapitalCase);
 
     document.getElementById("welcome").innerHTML += " " + userCapitalCase + "!";
-    document.getElementById("signup").innerHTML = userCapitalCase;
+    document.getElementById("username-nav").innerHTML = userCapitalCase;
 }

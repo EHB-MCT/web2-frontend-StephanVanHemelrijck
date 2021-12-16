@@ -3,6 +3,9 @@ import * as cookie from "./cookie.js";
 
 window.onload = function () {
     initFields();
+    if (document.cookie) {
+        window.location.href = "../html/home.html";
+    }
 };
 
 function initFields() {

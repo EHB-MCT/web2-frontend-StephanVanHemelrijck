@@ -126,7 +126,8 @@ main > div > h1 {
     align-items: center;
 }
 
-#missing-message {
+#missing-message,
+#error-message {
     width: var(--form-width);
     padding: 10px 0;
     text-align: center;

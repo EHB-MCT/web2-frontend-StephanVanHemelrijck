@@ -1,4 +1,5 @@
 "use strict";
+import * as cookie from "./cookie.js";
 
 window.onload = function () {
     initFields();
@@ -51,14 +52,13 @@ async function createUser() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
-                console.log("account created");
+                if (data.error) {
+                    document.getElementById("message-container").innerHTML = `<p id="error-message">${data.value} </p>`;
+                }
                 const timeUntillCookieExpiresInSeconds = 24 * (60 * 60);
                 cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 cookie.setCookie("session_token", `${data.session_token}`, { "max-age": timeUntillCookieExpiresInSeconds });
-            })
-            .then((data) => {
                 window.location.href = "../html/home.html";
             });
     } else {
