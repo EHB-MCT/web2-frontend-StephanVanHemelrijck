@@ -52,6 +52,12 @@ function userLogin(email, password) {
                 return;
             }
             document.getElementById("message-container").innerHTML = `<p id="error-message">${data.message} </p>`;
+            console.log(data);
+            // Storing user info in cookies
+            const timeUntillCookieExpiresInSeconds = 120;
+            document.cookie = `username= ${data.username}; max-age=${timeUntillCookieExpiresInSeconds}`;
+            document.cookie = `email= ${data.email}; max-age=${timeUntillCookieExpiresInSeconds}`;
+            document.cookie = `session_token= ${data.session_token}; max-age=${timeUntillCookieExpiresInSeconds}`;
             window.location.href = "../html/home.html";
         });
 }
