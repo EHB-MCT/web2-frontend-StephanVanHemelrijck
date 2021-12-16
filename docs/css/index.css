@@ -30,7 +30,7 @@ main {
     position: absolute;
     bottom: 75px;
     color: var(--white);
-    font-size: 2rem;
+    font-size: var(--slogan);
     font-weight: 700;
     text-shadow: 2px 2px 8px var(--black);
     text-align: center;
@@ -53,7 +53,7 @@ main > div {
 }
 
 main div h1 {
-    font-size: 2rem;
+    font-size: var(--title);
     font-weight: 700;
     color: var(--white);
 }
@@ -69,7 +69,7 @@ main div h1 {
     padding: 12px 20px;
     color: var(--white);
     background-color: var(--black);
-    font-size: 1rem;
+    font-size: var(--placeholder);
     border: 2px solid var(--white);
     border-radius: 10px;
     transition: 0.5s;
@@ -78,16 +78,16 @@ main div h1 {
 #inputs input::placeholder {
     color: var(--white);
     font-style: oblique;
+    font-size: var(--placeholder);
 }
 #inputs input:focus {
-    border-color: blue;
     border: 2px solid var(--blue);
 }
 
 #login {
     background-color: var(--blue);
     padding: 10px;
-    font-size: 1.25rem;
+    font-size: var(--button);
     text-align: center;
     width: var(--form-width);
 }
@@ -131,5 +131,5 @@ main > div > h1 {
     text-decoration: none;
     text-shadow: 1px 1px black;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: var(--error);
 }

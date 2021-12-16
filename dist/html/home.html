@@ -4,9 +4,40 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>RoutExplore - Home</title>
+        <link rel="stylesheet" href="../../docs/css/home.css" />
+        <title>Routexplore</title>
     </head>
     <body>
-        <h1>Homepage</h1>
+        <header>
+            <h1>RoutExplore</h1>
+            <ul>
+                <li><a href="../html/[username].html" id="signup">[username]</a></li>
+            </ul>
+        </header>
+        <main>
+            <div class="container">
+                <h1 id="welcome">Welcome [username]</h1>
+                <form action="" id="form">
+                    <div class="subchoice">
+                        <label for="types">What do you want to do?</label>
+                        <select name="types" id="selection">
+                            <option value="0">Select a sport</option>
+                            <option value="biketouring">Bike Touring</option>
+                            <option value="mountainbiking">Mountain Biking</option>
+                            <option value="roadcycling">Road Cycling</option>
+                        </select>
+                    </div>
+                    <div class="subchoice">
+                        <label for="location">Where do you want to go?</label>
+                        <input type="text" name="location" id="location" placeholder="Choose where you want to go" />
+                    </div>
+                    <div class="subchoice">
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+            <h1 id="slogan">Never stop exploring,<br />Find out new routes no matter where you are!</h1>
+        </main>
+        <script src="/dist/js/index.js"></script>
     </body>
 </html>

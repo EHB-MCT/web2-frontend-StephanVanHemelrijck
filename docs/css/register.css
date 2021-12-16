@@ -1,9 +1,14 @@
 @import url(styleguide.css);
 @import url(header.css);
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --form-width: 70%;
 }
 
 body {
@@ -14,9 +19,7 @@ body {
     background-size: cover;
     background-color: var(--blue);
 }
-:root {
-    --form-width: 70%;
-}
+
 main {
     height: calc(100vh - 57px);
     display: flex;

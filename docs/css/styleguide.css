@@ -9,6 +9,13 @@
     /* Font */
     font-family: "Quicksand";
     font-size: 1rem;
+    /* Font-size */
+    --title: 2.5rem;
+    --placeholder: 1rem;
+    --button: 1.25rem;
+    --error: 1.25rem;
+    --text: 1rem;
+    --slogan: 2rem;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap");
