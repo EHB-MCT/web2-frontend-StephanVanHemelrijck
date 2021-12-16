@@ -99,6 +99,11 @@ input[type="text"] {
     border-radius: 8px;
 }
 
+select:focus,
+input[type="text"]:focus {
+    border: 2px solid var(--blue);
+}
+
 button[type="submit"] {
     text-decoration: none;
     font-size: 1rem;
@@ -108,4 +113,9 @@ button[type="submit"] {
     border: 0 solid;
     border-radius: 8px;
     text-shadow: 1px 1px var(--black);
+}
+
+/* Hovers */
+button[type="submit"]:hover {
+    background-color: var(--blue-hover);
 }

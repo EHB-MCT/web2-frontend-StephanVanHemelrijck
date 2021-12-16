@@ -1,3 +1,4 @@
+@import url("../css/header-dropdown.css");
 /* Header */
 header {
     /* background-color: rgba(35, 31, 32, 0.75); */
@@ -6,7 +7,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 10%;
+    padding: 0px 10%;
 }
 
 header h1 {
@@ -29,7 +30,7 @@ ul {
     border-radius: 8px;
     text-shadow: 1px 1px var(--black);
 }
-
+#nav-logo,
 #username-nav {
     color: var(--blue);
     font-size: var(--slogan);
@@ -40,4 +41,14 @@ ul {
     padding: 10px 20px;
     max-width: 300px;
     overflow: hidden;
+}
+
+/* Hovers */
+
+#username-nav:hover,
+#nav-logo:hover {
+    color: var(--blue-hover);
+}
+#signup:hover {
+    background-color: var(--blue-hover);
 }

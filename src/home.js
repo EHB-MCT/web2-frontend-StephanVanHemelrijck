@@ -6,6 +6,7 @@ window.onload = function () {
         alert("User not logged in, redirecting...");
         window.location.href = "../html/index.html";
     }
+    init();
     personalizeHTML();
 };
 
@@ -17,4 +18,19 @@ function personalizeHTML() {
 
     document.getElementById("welcome").innerHTML += " " + userCapitalCase + "!";
     document.getElementById("username-nav").innerHTML = userCapitalCase;
+}
+
+function init() {
+    // Nav dropdown button
+    document.getElementById("username-nav").addEventListener("click", (e) => {
+        console.log("klik");
+        toggleDropdown();
+    });
+}
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function toggleDropdown() {
+    const dropwdown = document.getElementById("myDropdown").classList.toggle("show");
+    console.log(dropwdown);
 }
