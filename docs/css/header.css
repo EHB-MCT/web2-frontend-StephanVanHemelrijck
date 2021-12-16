@@ -12,7 +12,7 @@ header {
 header h1 {
     color: var(--blue);
     font-size: 2rem;
-    text-shadow: 1px 1px black;
+    text-shadow: 1px 1px var(--black);
 }
 
 ul {
@@ -28,4 +28,16 @@ ul {
     border: 0 solid;
     border-radius: 8px;
     text-shadow: 1px 1px var(--black);
+}
+
+#username-nav {
+    color: var(--blue);
+    font-size: var(--slogan);
+    text-shadow: 1px 1px var(--black);
+    text-decoration: none;
+    border: 0 solid;
+    border-radius: 8px;
+    padding: 10px 20px;
+    max-width: 300px;
+    overflow: hidden;
 }
