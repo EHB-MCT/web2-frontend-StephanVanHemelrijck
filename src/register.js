@@ -53,10 +53,10 @@ async function createUser() {
             .then((data) => {
                 console.log(data);
                 console.log("account created");
-                const timeUntillCookieExpiresInSeconds = 120;
-                document.cookie = `username= ${data.username}; max-age=${timeUntillCookieExpiresInSeconds}`;
-                document.cookie = `email= ${data.email}; max-age=${timeUntillCookieExpiresInSeconds}`;
-                document.cookie = `session_token= ${data.session_token}; max-age=${timeUntillCookieExpiresInSeconds}`;
+                const timeUntillCookieExpiresInSeconds = 24 * (60 * 60);
+                cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("session_token", `${data.session_token}`, { "max-age": timeUntillCookieExpiresInSeconds });
             })
             .then((data) => {
                 window.location.href = "../html/home.html";

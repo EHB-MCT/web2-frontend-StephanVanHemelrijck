@@ -1,4 +1,5 @@
 "use strict";
+import * as cookie from "./cookie.js";
 
 window.onload = function () {
     initFields();
@@ -54,10 +55,10 @@ function userLogin(email, password) {
             document.getElementById("message-container").innerHTML = `<p id="error-message">${data.message} </p>`;
             console.log(data);
             // Storing user info in cookies
-            const timeUntillCookieExpiresInSeconds = 120;
-            document.cookie = `username= ${data.username}; max-age=${timeUntillCookieExpiresInSeconds}`;
-            document.cookie = `email= ${data.email}; max-age=${timeUntillCookieExpiresInSeconds}`;
-            document.cookie = `session_token= ${data.session_token}; max-age=${timeUntillCookieExpiresInSeconds}`;
+            const timeUntillCookieExpiresInSeconds = 24 * (60 * 60);
+            cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
+            cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
+            cookie.setCookie("session_token", `${data.session_token}`, { "max-age": timeUntillCookieExpiresInSeconds });
             window.location.href = "../html/home.html";
         });
 }
