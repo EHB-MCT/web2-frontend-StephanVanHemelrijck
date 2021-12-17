@@ -3,7 +3,8 @@ import * as cookie from "./cookie.js";
 
 window.onload = function () {
     initFields();
-    if (document.cookie) {
+    let currentSession = cookie.getCookie("token");
+    if (currentSession) {
         window.location.href = "../html/home.html";
     }
 };
@@ -56,12 +57,13 @@ function userLogin(email, password) {
                 return;
             }
             document.getElementById("message-container").innerHTML = `<p id="error-message">${data.message} </p>`;
-            console.log(data);
             // Storing user info in cookies
-            const timeUntillCookieExpiresInSeconds = 24 * (60 * 60);
+            const timeUntillCookieExpiresInSeconds = 1 * (60 * 60); // Set to expire in 1 hr
             cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
             cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
-            cookie.setCookie("session_token", `${data.session_token}`, { "max-age": timeUntillCookieExpiresInSeconds });
-            window.location.href = "../html/home.html";
+            cookie.setCookie("token", `${data.token}`, { "max-age": timeUntillCookieExpiresInSeconds });
+            if (!data.error) {
+                window.location.href = "../html/home.html";
+            }
         });
 }

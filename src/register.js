@@ -39,27 +39,29 @@ async function createUser() {
 
     // Do passwords match?
     if (password == passwordConfirm) {
-        const user = JSON.stringify({
-            username: username,
-            email: email,
-            password: password,
-        });
-
         fetch("https://web2-routexploreapi.herokuapp.com/users/register", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: user,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: `${username}`,
+                email: `${email}`,
+                password: `${password}`,
+            }),
         })
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
                     document.getElementById("message-container").innerHTML = `<p id="error-message">${data.value} </p>`;
                 }
-                const timeUntillCookieExpiresInSeconds = 24 * (60 * 60);
+                const timeUntillCookieExpiresInSeconds = 1 * (60 * 60); // Set to expire in 1 hr
                 cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
-                cookie.setCookie("session_token", `${data.session_token}`, { "max-age": timeUntillCookieExpiresInSeconds });
-                window.location.href = "../html/home.html";
+                cookie.setCookie("token", `${data.token}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                if (!data.error) {
+                    window.location.href = "../html/home.html";
+                }
             });
     } else {
         document.getElementById("message-container").innerHTML = `<p id="missing-message">Passwords do not match</p>`;

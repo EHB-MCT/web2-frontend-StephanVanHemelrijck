@@ -11,6 +11,10 @@ export function init() {
     document.getElementById("logout").addEventListener("click", (e) => {
         logOut();
     });
+    // Delete User
+    document.getElementById("delete").addEventListener("click", (e) => {
+        deleteUser();
+    });
 }
 
 export function toggleDropdown() {
@@ -18,9 +22,21 @@ export function toggleDropdown() {
 }
 
 export function logOut() {
-    console.log("logging out");
+    cookie.deleteCookie("token");
+    window.location.href = "../html/index.html";
+}
+
+export async function deleteUser() {
+    console.log(document.cookie);
+    const email = cookie.getCookie("email");
+    console.log(email);
+    //web2-routexploreapi.herokuapp.com/users/delete
+    await fetch("https://web2-routexploreapi.herokuapp.com/users/:email" + "?email=" + `${email}`, {
+        method: "DELETE",
+    });
+    console.log(document.cookie);
     cookie.deleteCookie("username");
     cookie.deleteCookie("email");
-    cookie.deleteCookie("session_token");
+    cookie.deleteCookie("token");
     window.location.href = "../html/index.html";
 }
