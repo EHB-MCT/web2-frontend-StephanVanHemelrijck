@@ -7,6 +7,19 @@
         <link rel="stylesheet" href="../../docs/css/home.css" />
         <link rel="stylesheet" href="../../docs/css/iconfont.css" />
         <title>Routexplore</title>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin=""
+        />
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script
+            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""
+        ></script>
+        <script src="../../src/Polyline.encoded.js"></script>
     </head>
     <body>
         <header>
@@ -28,7 +41,7 @@
             <div class="container">
                 <h1 id="welcome">Welcome</h1>
                 <form action="" id="form">
-                    <div class="subchoice">
+                    <!-- <div class="subchoice">
                         <label for="types">What do you want to do?</label>
                         <select name="types" id="selection">
                             <option value="0">Select a sport</option>
@@ -36,16 +49,21 @@
                             <option value="mountainbiking">Mountain Biking</option>
                             <option value="roadcycling">Road Cycling</option>
                         </select>
+                    </div> -->
+                    <div class="subchoice">
+                        <label for="location">Where do you want to start?</label>
+                        <input type="text" name="location" id="location-start" placeholder="Choose where you want to start" />
                     </div>
                     <div class="subchoice">
                         <label for="location">Where do you want to go?</label>
-                        <input type="text" name="location" id="location" placeholder="Choose where you want to go" />
+                        <input type="text" name="location" id="location-end" placeholder="Choose where you want to go" />
                     </div>
                     <div class="subchoice">
                         <button type="submit">Search</button>
                     </div>
                 </form>
             </div>
+            <div id="map"></div>
             <h1 id="slogan">Never stop exploring,<br />Find out new routes no matter where you are!</h1>
         </main>
         <script src="/dist/js/home.js"></script>
