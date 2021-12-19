@@ -24,6 +24,9 @@
     <body>
         <header>
             <a href="#" class="icon-home" id="nav-logo">RoutExplore</a>
+            <div class="container">
+                <h1 id="welcome">Welcome</h1>
+            </div>
             <div class="dropdown">
                 <a href="#" id="username-nav" class="icon-user dropbtn"></a>
                 <div id="myDropdown" class="dropdown-content">
@@ -38,10 +41,20 @@
             </ul> -->
         </header>
         <main>
-            <div class="container">
-                <h1 id="welcome">Welcome</h1>
+            <div class="map-container">
                 <form action="" id="form">
-                    <!-- <div class="subchoice">
+                    <div class="subchoice">
+                        <label for="location">Where do you want to start?</label>
+                        <input type="text" name="location" id="location-start" placeholder="Search a place or click on map to add" />
+                    </div>
+                    <div class="subchoice">
+                        <button type="submit">Search</button>
+                    </div>
+                    <div class="subchoice">
+                        <button type="submit" id="lastbtn">Create</button>
+                    </div>
+                </form>
+                <!-- <div class="subchoice">
                         <label for="types">What do you want to do?</label>
                         <select name="types" id="selection">
                             <option value="0">Select a sport</option>
@@ -50,20 +63,8 @@
                             <option value="roadcycling">Road Cycling</option>
                         </select>
                     </div> -->
-                    <div class="subchoice">
-                        <label for="location">Where do you want to start?</label>
-                        <input type="text" name="location" id="location-start" placeholder="Choose where you want to start" />
-                    </div>
-                    <div class="subchoice">
-                        <label for="location">Where do you want to go?</label>
-                        <input type="text" name="location" id="location-end" placeholder="Choose where you want to go" />
-                    </div>
-                    <div class="subchoice">
-                        <button type="submit">Search</button>
-                    </div>
-                </form>
+                <div id="map"></div>
             </div>
-            <div id="map"></div>
             <h1 id="slogan">Never stop exploring,<br />Find out new routes no matter where you are!</h1>
         </main>
         <script src="/dist/js/home.js"></script>

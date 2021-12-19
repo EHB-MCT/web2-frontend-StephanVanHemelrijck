@@ -19,7 +19,7 @@ export function initMap() {
         interactive: true,
     }).addTo(map);
 
-    document.getElementById("map").append(map);
+    // document.getElementById("map").append(map);
     return map;
 }
 
@@ -53,17 +53,18 @@ export async function deleteFromRoute(marker) {
         }
     }
     markers = filteredMarkers;
-    console.log("filtered", filteredMarkers);
 }
 
-export async function createRoute() {
+export async function createRoute(ronde = true) {
     let urlifiedMarkersList = "";
     let i = 0;
     do {
         urlifiedMarkersList += "&point=" + markers[i]._latlng.lat + "," + markers[i]._latlng.lng;
         i++;
     } while (i < markers.length);
-
+    if (ronde == true) {
+        urlifiedMarkersList += "&point=" + markers[0]._latlng.lat + "," + markers[0]._latlng.lng;
+    }
     let x;
     await fetch("https://graphhopper.com/api/1/route?key=0e189b71-b607-4cb2-97b4-5678175d8fc6&profile=bike&points_encoded=false" + urlifiedMarkersList)
         .then((res) => res.json())
@@ -73,13 +74,22 @@ export async function createRoute() {
     return x;
 }
 
-export function drawRoute(data) {
+export function reverseCoordinates(data) {
     let coordinates = data.paths[0].points.coordinates;
     let coordinatesReversed = [];
     for (let i = 0; i < coordinates.length; i++) {
         coordinatesReversed.push(coordinates[i].reverse());
     }
     return coordinatesReversed;
+}
+
+export function sortCoordinates() {
+    const sortedMarkers = markers.sort(function (a, b) {
+        if (a._leaflet_id > b._leaflet_id) {
+            return a - b;
+        }
+    });
+    markers = sortedMarkers;
 }
 
 export async function convertMarkersIntoList() {

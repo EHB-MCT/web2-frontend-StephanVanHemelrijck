@@ -5,9 +5,10 @@ header {
     background-color: var(--white);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 10px 10%;
+    padding: 10px;
+    margin: auto;
 }
 
 header h1 {
@@ -40,7 +41,7 @@ ul {
     border-radius: 8px;
     padding: 10px 20px;
     max-width: 300px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* Hovers */
