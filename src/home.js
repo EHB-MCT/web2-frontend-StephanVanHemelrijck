@@ -126,6 +126,7 @@ function init() {
             }
         }
         // PolylineEnc to save in db
+
         // Found this on Leaflet plugins documentation, leaflet-image plugin.
         // Code from https://github.com/mapbox/leaflet-image/issues/113
         // Using import in html script recommended by Hirmes https://github.com/mapbox/leaflet-image/issues/113#issuecomment-505661878

@@ -7,13 +7,25 @@ export function init() {
     document.getElementById("username-nav").addEventListener("click", (e) => {
         toggleDropdown();
     });
-    // Log Out
-    document.getElementById("logout").addEventListener("click", (e) => {
-        logOut();
+    // Routes
+    document.getElementById("routes").addEventListener("click", (e) => {
+        window.location.href = window.location.origin + "/dist/html/routes.html";
+    });
+    // My Routes
+    document.getElementById("my-routes").addEventListener("click", (e) => {
+        window.location.href = window.location.origin + "/dist/html/my-routes.html";
+    });
+    // Favorite Routes
+    document.getElementById("fav-routes").addEventListener("click", (e) => {
+        window.location.href = window.location.origin + "/dist/html/fav-routes.html";
     });
     // Delete User
     document.getElementById("delete").addEventListener("click", (e) => {
         deleteUser();
+    });
+    // Log Out
+    document.getElementById("logout").addEventListener("click", (e) => {
+        logOut();
     });
 }
 

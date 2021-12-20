@@ -1,8 +1,8 @@
 @font-face {
     font-family: "icomoon";
-    src: url("../fonts/icomoon.eot?xdya8j");
-    src: url("../fonts/icomoon.eot?xdya8j#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?xdya8j") format("truetype"),
-        url("../fonts/icomoon.woff?xdya8j") format("woff"), url("../fonts/icomoon.svg?xdya8j#icomoon") format("svg");
+    src: url("../fonts/icomoon.eot?lt4azz");
+    src: url("../fonts/icomoon.eot?lt4azz#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?lt4azz") format("truetype"),
+        url("../fonts/icomoon.woff?lt4azz") format("woff"), url("../fonts/icomoon.svg?lt4azz#icomoon") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -12,7 +12,6 @@
 [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: "icomoon" !important;
-    /* speak: never; */
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -24,15 +23,31 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-directions_bike:before {
+    content: "\e901";
+    padding-right: 10px;
+}
 .icon-home:before {
     content: "\e900";
-    padding-right: 5px;
+    padding-right: 10px;
+}
+.icon-map:before {
+    content: "\e94b";
+    padding-right: 10px;
 }
 .icon-user:before {
     content: "\e971";
-    padding-right: 5px;
+    padding-right: 10px;
+}
+.icon-bin2:before {
+    content: "\e9ad";
+    padding-right: 10px;
+}
+.icon-star-full:before {
+    content: "\e9d9";
+    padding-right: 10px;
 }
 .icon-exit:before {
     content: "\ea14";
-    padding-right: 5px;
+    padding-right: 10px;
 }
