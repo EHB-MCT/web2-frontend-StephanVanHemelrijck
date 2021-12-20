@@ -34,18 +34,25 @@ export async function getLatlng(location) {
 }
 
 export async function getLocation(latlng) {
-    const lat = latlng["lat"];
-    const lng = latlng["lng"];
+    const lat = latlng[0];
+    const lng = latlng[1];
     let location = {};
     await fetch("https://graphhopper.com/api/1/geocode?key=" + graphhopper_api_key + "&reverse=true&point=" + lat + "," + lng + "&debug=true&")
         .then((res) => res.json())
         .then((data) => {
-            const city = data.hits[0].city;
-            const street = data.hits[0].name;
-            location = JSON.stringify({ city: city, street: street });
+            location = {
+                country: data.hits[0].country,
+                state: data.hits[0].state,
+                city: data.hits[0].city,
+                postcode: data.hits[0].postcode,
+                street: data.hits[0].street,
+                name: data.hits[0].name,
+                point: data.hits[0].point,
+            };
         })
         .catch((err) => {
             console.log("You didn't click on a piece of land...");
+            return;
         });
     return location;
 }

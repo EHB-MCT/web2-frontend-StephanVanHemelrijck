@@ -117,6 +117,7 @@ function init() {
             return;
         }
         let latlngslist;
+        // PolylineEnc to save in db
         let polylineEnc;
         for (let i in map._layers) {
             if (map._layers[i]._latlngs) {
@@ -125,8 +126,13 @@ function init() {
                 polylineEnc = polyline.encodePath();
             }
         }
-        // PolylineEnc to save in db
-
+        // Find startlocation
+        const startLat = latlngslist[0].lat;
+        const startLng = latlngslist[0].lng;
+        const startLatLng = [startLat, startLng];
+        // Calculate location based on [lat,long]
+        const startLocation = await m.getLocation(startLatLng);
+        console.log("start", startLocation);
         // Found this on Leaflet plugins documentation, leaflet-image plugin.
         // Code from https://github.com/mapbox/leaflet-image/issues/113
         // Using import in html script recommended by Hirmes https://github.com/mapbox/leaflet-image/issues/113#issuecomment-505661878
@@ -145,13 +151,22 @@ function init() {
             img.id = "route-img";
             document.getElementById("images").innerHTML = "";
             document.getElementById("images").appendChild(img);
-            const data = JSON.stringify({
+            const data = {
                 created_by: cookie.getCookie("username"),
                 route_name: name,
+                route_start_location: {
+                    country: startLocation.country,
+                    state: startLocation.state,
+                    city: startLocation.city,
+                    postcode: startLocation.postcode,
+                    street: startLocation.street,
+                    name: startLocation.name,
+                    point: startLocation.point,
+                },
                 route_coordinates: latlngslist,
                 route_polyline_encoded: polylineEnc,
                 route_img_url: img.src,
-            });
+            };
             saveRoute(data);
         });
     });
@@ -161,7 +176,7 @@ async function saveRoute(data) {
     fetch("https://web2-routexploreapi.herokuapp.com/routes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: data,
+        body: JSON.stringify(data),
     })
         .then((res) => res.json())
         .then((data) => console.log(data));
