@@ -6,7 +6,8 @@ const graphhopper_api_key = "0e189b71-b607-4cb2-97b4-5678175d8fc6";
 
 export function initMap() {
     // Hardcoded center latlong of Belgium
-    const map = L.map("map").setView([50.597001818485246, 4.86618856002286], 7);
+    const options = { preferCanvas: true, zoom: 8, renderer: L.canvas() };
+    const map = L.map("map", options).setView([50.597001818485246, 4.86618856002286]);
 
     L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" + mapbox_api_key, {
         attribution:
@@ -21,6 +22,15 @@ export function initMap() {
 
     // document.getElementById("map").append(map);
     return map;
+}
+
+export async function getLatlng(location) {
+    const newLocation = await fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + location + ".json?access_token=" + mapbox_api_key, {
+        headers: { "Content-Type": "application/json" },
+    })
+        .then((res) => res.json())
+        .then((data) => data.features[0]);
+    return newLocation;
 }
 
 export async function getLocation(latlng) {
@@ -70,6 +80,7 @@ export async function createRoute(ronde = true) {
         .then((res) => res.json())
         .then((data) => {
             x = data;
+            console.log("X", x);
         });
     return x;
 }

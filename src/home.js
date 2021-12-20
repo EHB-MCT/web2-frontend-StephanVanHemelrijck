@@ -2,16 +2,25 @@ import * as cookie from "./cookie.js";
 import * as header from "./header-dropdown.js";
 import * as m from "./map.js";
 
+// MAPBOX API KEY
+const mapbox_api_key = "pk.eyJ1Ijoic3VlemhvbyIsImEiOiJja3hjMGUybm4wZGc3MnVtbThhazd2ZWk0In0.vZFkONLp_lXJZK15bC0xCg";
+
+// GRAPHHOPPER API KEY
+const graphhopper_api_key = "0e189b71-b607-4cb2-97b4-5678175d8fc6";
+
+// Map layers
+let map = m.initMap();
+const layergroup = L.layerGroup().addTo(map);
+let polyline;
 window.onload = function () {
     if (!document.cookie) {
         alert("User not logged in, redirecting...");
         window.location.href = "../html/index.html";
     }
     header.init();
+    init();
     personalizeHTML();
     // Map interaction
-    const map = m.initMap();
-    const layergroup = L.layerGroup().addTo(map);
     // Event handlers
     let markerCount = 0;
     map.addEventListener("click", async (event) => {
@@ -26,9 +35,9 @@ window.onload = function () {
         }
         // Create route
         const route = await m.createRoute(); // Returns lnglats list
-        const drawRoute = await m.reverseCoordinates(route); // Reverse to latlngs
+        const latlngs = await m.reverseCoordinates(route); // Reverse to latlngs
         // Creating a layergroup for polyline
-        const polyline = await L.polyline(drawRoute, { color: "#FC5200", weight: 2, lineJoin: "round" });
+        polyline = await L.polyline(latlngs, { color: "#FC5200", weight: 2, lineJoin: "round" });
         layergroup.addLayer(polyline);
         // polylines_layergroup.clearLayers();
         // Delete marker and it's corresponding polyline
@@ -38,13 +47,12 @@ window.onload = function () {
             // console.log(polyline_layergroup);
             markerCount -= 1;
             const sortedMarkers = await m.sortCoordinates();
-            console.log(sortedMarkers);
             // Initialize new latlng list
-            const newRoute = await m.createRoute(); // Returns lnglats list
+            distance = Math.round(route.paths[0].distance / 1000);
             // Function to reverse lnglats into a latlngs list || Needed for API request
             const latlngs = await m.reverseCoordinates(newRoute);
             // Create new route
-            const polyline = await L.polyline(latlngs, { color: "#FC5200", weight: 2, lineJoin: "round" });
+            polyline = await L.polyline(latlngs, { color: "#FC5200", weight: 2, lineJoin: "round" });
             // Delete existing polyline
             layergroup.clearLayers();
             // Add new polyline
@@ -57,7 +65,6 @@ window.onload = function () {
             // m.addToRoute(e.target);
             // Sort markers id low to high in case somehow the order is screwed
             const sortedMarkers = await m.sortCoordinates();
-            console.log(sortedMarkers);
             // Initialize new latlng list
             const newRoute = await m.createRoute(); // Returns lnglats list
             // Function to reverse lnglats into a latlngs list || Needed for API request
@@ -81,4 +88,59 @@ function personalizeHTML() {
     document.getElementById("welcome").innerHTML += " " + userCapitalCase + "!";
     // Nav
     document.getElementById("username-nav").innerHTML = userCapitalCase;
+}
+
+function init() {
+    // reset
+    document.getElementById("reset").addEventListener("click", (e) => {
+        // refresh page = delete markers?
+        window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+    });
+    // search
+    document.getElementById("search").addEventListener("click", async (e) => {
+        e.preventDefault();
+        const startLocation = document.getElementById("location-start").value;
+        // Get location in latlng
+        const location = await m.getLatlng(startLocation);
+        const lat = location.geometry.coordinates[1];
+        const lng = location.geometry.coordinates[0];
+        console.log(lat, lng);
+        // Fly to location
+        map.flyTo(new L.LatLng(lat, lng), 14);
+    });
+    // Save
+    document.getElementById("save").addEventListener("click", async (e) => {
+        e.preventDefault();
+        let latlngslist;
+        let polylineEnc;
+        for (let i in map._layers) {
+            if (map._layers[i]._latlngs) {
+                latlngslist = map._layers[i]._latlngs;
+                // console.log(latlngslist);
+                const polyline = L.polyline(latlngslist, 5);
+                polylineEnc = polyline.encodePath();
+            }
+        }
+        // PolylineEnc to save in db
+        console.log(polylineEnc);
+        // Found this on Leaflet plugins documentation, leaflet-image plugin.
+        // Code from https://github.com/mapbox/leaflet-image/issues/113
+        // Using import in html script recommended by Hirmes https://github.com/mapbox/leaflet-image/issues/113#issuecomment-505661878
+        const startPointLat = latlngslist[0].lat;
+        const startPointLng = latlngslist[0].lng;
+        console.log(startPointLng);
+        map.setView([startPointLat, startPointLng], 10, { animation: false });
+        // Image to save in db
+        let imageURL = "";
+        leafletImage(map, function (err, canvas) {
+            // now you have canvas
+            // example thing to do with that canvas:
+            var img = document.createElement("img");
+            var dimensions = map.getSize();
+            img.width = dimensions.x;
+            img.height = dimensions.y;
+            img.src = canvas.toDataURL();
+            imageURL = img.src;
+        });
+    });
 }

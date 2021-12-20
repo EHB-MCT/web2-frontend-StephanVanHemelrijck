@@ -80,6 +80,9 @@ label {
     padding: 0px 10px 10px 10px;
 }
 .subchoice:nth-child(2) {
+    padding: 10px 10px 10px 0px;
+}
+.subchoice:nth-last-child(2) {
     padding: 10px 0px;
 }
 .subchoice:last-child {

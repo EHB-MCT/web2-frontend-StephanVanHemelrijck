@@ -19,7 +19,9 @@
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""
         ></script>
+        <script src="https://unpkg.com/leaflet-image@latest/leaflet-image.js"></script>
         <script src="../../src/Polyline.encoded.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     </head>
     <body>
         <header>
@@ -45,13 +47,16 @@
                 <form action="" id="form">
                     <div class="subchoice">
                         <label for="location">Where do you want to start?</label>
-                        <input type="text" name="location" id="location-start" placeholder="Search a place or click on map to add" />
+                        <input type="text" name="location" id="location-start" placeholder="Search a place" />
                     </div>
                     <div class="subchoice">
-                        <button type="submit">Search</button>
+                        <button type="submit" id="reset">Reset</button>
                     </div>
                     <div class="subchoice">
-                        <button type="submit" id="lastbtn">Create</button>
+                        <button type="submit" id="search">Search</button>
+                    </div>
+                    <div class="subchoice">
+                        <button type="submit" id="save">Save</button>
                     </div>
                 </form>
                 <!-- <div class="subchoice">
