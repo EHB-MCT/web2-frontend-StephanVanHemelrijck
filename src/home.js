@@ -111,6 +111,11 @@ function init() {
     // Save
     document.getElementById("save").addEventListener("click", async (e) => {
         e.preventDefault();
+        const name = document.getElementById("name").value;
+        if (!name) {
+            alert("Please assign a name before trying to save.");
+            return;
+        }
         let latlngslist;
         let polylineEnc;
         for (let i in map._layers) {
@@ -142,5 +147,15 @@ function init() {
             img.src = canvas.toDataURL();
             imageURL = img.src;
         });
+        console.log(document.cookie);
+        // Object to store in database
+        const data = {
+            created_by: cookie.getCookie("username"),
+            route_name: name,
+            route_coordinates: latlngslist,
+            route_polyline_encoded: polylineEnc,
+            route_img: imageURL,
+        };
+        console.log(data);
     });
 }

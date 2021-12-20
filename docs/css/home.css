@@ -58,7 +58,7 @@ main > div {
     display: flex;
     width: 60%;
     justify-content: center;
-    padding: 20px 0px 0px;
+    padding: 50px 0px 0px;
 }
 
 label {
@@ -76,14 +76,17 @@ label {
 }
 
 .subchoice:first-child {
-    flex: 1 1 60%;
+    flex: 0 1 60%;
     padding: 0px 10px 10px 10px;
 }
 .subchoice:nth-child(2) {
     padding: 10px 10px 10px 0px;
 }
-.subchoice:nth-last-child(2) {
+.subchoice:nth-child(3) {
     padding: 10px 0px;
+}
+.subchoice:nth-last-child(2) {
+    padding: 10px 0px 10px 10px;
 }
 .subchoice:last-child {
     padding: 0px 10px 10px 10px;
@@ -95,7 +98,7 @@ input[type="text"] {
     color: var(--white);
     font-size: var(--text);
     padding: 10px 5px;
-    border-radius: 8px 0px 0px;
+    border-radius: 8px;
 }
 
 select:focus,
