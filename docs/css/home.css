@@ -139,3 +139,7 @@ button[type="submit"]:hover {
     border-color: var(--blue-hover);
     transition: 0.5s;
 }
+
+.hidden {
+    display: none;
+}

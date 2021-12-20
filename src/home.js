@@ -48,7 +48,7 @@ window.onload = function () {
             markerCount -= 1;
             const sortedMarkers = await m.sortCoordinates();
             // Initialize new latlng list
-            distance = Math.round(route.paths[0].distance / 1000);
+            const newRoute = await m.createRoute(); // Returns lnglats list
             // Function to reverse lnglats into a latlngs list || Needed for API request
             const latlngs = await m.reverseCoordinates(newRoute);
             // Create new route
@@ -121,23 +121,19 @@ function init() {
         for (let i in map._layers) {
             if (map._layers[i]._latlngs) {
                 latlngslist = map._layers[i]._latlngs;
-                // console.log(latlngslist);
                 const polyline = L.polyline(latlngslist, 5);
                 polylineEnc = polyline.encodePath();
             }
         }
         // PolylineEnc to save in db
-        console.log(polylineEnc);
         // Found this on Leaflet plugins documentation, leaflet-image plugin.
         // Code from https://github.com/mapbox/leaflet-image/issues/113
         // Using import in html script recommended by Hirmes https://github.com/mapbox/leaflet-image/issues/113#issuecomment-505661878
         const startPointLat = latlngslist[0].lat;
         const startPointLng = latlngslist[0].lng;
-        console.log(startPointLng);
         map.setView([startPointLat, startPointLng], 10, { animation: false });
         // Image to save in db
-        let imageURL = "";
-        leafletImage(map, function (err, canvas) {
+        await leafletImage(map, function (err, canvas) {
             // now you have canvas
             // example thing to do with that canvas:
             var img = document.createElement("img");
@@ -145,17 +141,27 @@ function init() {
             img.width = dimensions.x;
             img.height = dimensions.y;
             img.src = canvas.toDataURL();
-            imageURL = img.src;
+            img.id = "route-img";
+            document.getElementById("images").innerHTML = "";
+            document.getElementById("images").appendChild(img);
+            const data = JSON.stringify({
+                created_by: cookie.getCookie("username"),
+                route_name: name,
+                route_coordinates: latlngslist,
+                route_polyline_encoded: polylineEnc,
+                route_img_url: img.src,
+            });
+            saveRoute(data);
         });
-        console.log(document.cookie);
-        // Object to store in database
-        const data = {
-            created_by: cookie.getCookie("username"),
-            route_name: name,
-            route_coordinates: latlngslist,
-            route_polyline_encoded: polylineEnc,
-            route_img: imageURL,
-        };
-        console.log(data);
     });
+}
+
+async function saveRoute(data) {
+    fetch("https://web2-routexploreapi.herokuapp.com/routes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: data,
+    })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
 }

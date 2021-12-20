@@ -80,7 +80,6 @@ export async function createRoute(ronde = true) {
         .then((res) => res.json())
         .then((data) => {
             x = data;
-            console.log("X", x);
         });
     return x;
 }
