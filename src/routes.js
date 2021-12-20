@@ -29,6 +29,9 @@ async function printRoutes() {
             console.log(data);
             let htmlString = ``;
             data.forEach((element) => {
+                // Capitalize username
+                const str = element.created_by;
+                const userName = element.created_by.charAt(0).toUpperCase() + str.slice(1);
                 htmlString += ` <div id="container">
                 <div id="container-img">
                 <img src="${element.route_img_url}" alt="${element.route_name}" />
@@ -36,7 +39,8 @@ async function printRoutes() {
                 <div id="description">
                 <div id="names">
                 <p id="routename"><span>Route:</span> ${element.route_name}</p>
-                <p id="creatorname"><span>Created by:</span> ${element.created_by}</p>
+                <p id="creatorname"><span>Created by:</span> ${userName}</p>
+                <div id="${element.route_id}" class="icon-star-full addtofav"></div>
                 </div>
                 <p id="startpoint"><span>Startpoint:</span> ${element.route_start_location.city}, ${element.route_start_location.state}, ${element.route_start_location.country}</p>
                 </div>

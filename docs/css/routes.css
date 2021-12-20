@@ -90,10 +90,29 @@ main {
 }
 
 #names p {
-    width: 50%;
+    width: 45%;
 }
 
 #description p {
     padding: 8px;
     border: 1px solid var(--white);
+}
+
+.addtofav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    padding-left: 10px;
+    border: 1px solid var(--white);
+}
+
+.addtofav:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+    background-color: black;
+    border-width: 2px 0px 2px 2px;
+    border-color: var(--blue-hover);
+    color: var(--blue-hover);
+    overflow: hidden;
 }
