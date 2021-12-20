@@ -1,7 +1,5 @@
 import * as cookie from "./cookie.js";
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
 export function init() {
     // Nav dropdown button
     document.getElementById("username-nav").addEventListener("click", (e) => {
@@ -29,6 +27,8 @@ export function init() {
     });
 }
 
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
 export function toggleDropdown() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -46,7 +46,6 @@ export async function deleteUser() {
     await fetch("https://web2-routexploreapi.herokuapp.com/users/:email" + "?email=" + `${email}`, {
         method: "DELETE",
     });
-    console.log(document.cookie);
     cookie.deleteCookie("username");
     cookie.deleteCookie("email");
     cookie.deleteCookie("token");
