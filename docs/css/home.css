@@ -17,6 +17,12 @@ body {
     overflow: hidden;
 }
 
+#warning {
+    padding: 50px 0px 25px;
+    color: var(--white);
+    text-shadow: 1px 1px var(--black);
+}
+
 main {
     height: calc(100vh - 77px);
     display: flex;
@@ -58,7 +64,6 @@ main > div {
     display: flex;
     width: 55%;
     justify-content: center;
-    padding: 50px 0px 0px;
 }
 
 label {

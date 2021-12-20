@@ -40,7 +40,7 @@ main {
 #container {
     max-width: 410px;
     height: 320px;
-    margin: 75px 10px;
+    margin: 75px 20px 20px 20px;
     display: flex;
     flex-direction: column;
     border: 5px solid var(--white);
@@ -54,6 +54,7 @@ main {
 
 #container-img {
     width: 400px;
+    height: 235px;
     overflow: hidden;
 }
 
@@ -62,7 +63,7 @@ main {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    transform: scale(3);
+    transform: scale(1.75);
 }
 
 #description {

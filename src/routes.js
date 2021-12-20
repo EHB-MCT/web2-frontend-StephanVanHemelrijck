@@ -1,10 +1,15 @@
 import * as cookie from "./cookie.js";
 import * as header from "./header-dropdown.js";
 
-window.onload = function () {
+window.onload = async function () {
+    if (!document.cookie) {
+        alert("User not logged in, redirecting...");
+        window.location.href = "../html/index.html";
+    }
     header.init();
     personalizeHTML();
-    printRoutes();
+    document.getElementById("big-container").innerHTML = `<h1 style="color:#FFFFFF; padding: 50px;">Loading Routes...</h1>`;
+    await printRoutes();
 };
 
 function personalizeHTML() {
@@ -37,6 +42,6 @@ async function printRoutes() {
                 </div>
                 </div>`;
             });
-            document.getElementById("big-container").insertAdjacentHTML("beforeend", htmlString);
+            document.getElementById("big-container").innerHTML = htmlString;
         });
 }

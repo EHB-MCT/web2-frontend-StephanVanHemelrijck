@@ -137,7 +137,6 @@ function init() {
         // Using import in html script recommended by Hirmes https://github.com/mapbox/leaflet-image/issues/113#issuecomment-505661878
         const startPointLat = latlngslist[0].lat;
         const startPointLng = latlngslist[0].lng;
-        map.setView([startPointLat, startPointLng], 10, { animation: false });
         // Image to save in db
         await leafletImage(map, function (err, canvas) {
             // now you have canvas
