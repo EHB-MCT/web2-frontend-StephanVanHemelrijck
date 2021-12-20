@@ -5,6 +5,11 @@ export function init() {
     document.getElementById("username-nav").addEventListener("click", (e) => {
         toggleDropdown();
     });
+    // New Route
+    document.getElementById("new-route").addEventListener("click", (e) => {
+        console.log("click");
+        window.location.href = window.location.origin + "/dist/html/home.html";
+    });
     // Routes
     document.getElementById("routes").addEventListener("click", (e) => {
         window.location.href = window.location.origin + "/dist/html/routes.html";

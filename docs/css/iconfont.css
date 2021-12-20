@@ -1,8 +1,8 @@
 @font-face {
     font-family: "icomoon";
-    src: url("../fonts/icomoon.eot?lt4azz");
-    src: url("../fonts/icomoon.eot?lt4azz#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?lt4azz") format("truetype"),
-        url("../fonts/icomoon.woff?lt4azz") format("woff"), url("../fonts/icomoon.svg?lt4azz#icomoon") format("svg");
+    src: url("../fonts/icomoon.eot?vuok1e");
+    src: url("../fonts/icomoon.eot?vuok1e#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?vuok1e") format("truetype"),
+        url("../fonts/icomoon.woff?vuok1e") format("woff"), url("../fonts/icomoon.svg?vuok1e#icomoon") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -23,8 +23,8 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-directions_bike:before {
-    content: "\e901";
+.icon-add:before {
+    content: "\e902";
     padding-right: 10px;
 }
 .icon-home:before {
@@ -49,5 +49,9 @@
 }
 .icon-exit:before {
     content: "\ea14";
+    padding-right: 10px;
+}
+.icon-directions_bike:before {
+    content: "\e901";
     padding-right: 10px;
 }

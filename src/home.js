@@ -132,7 +132,6 @@ function init() {
         const startLatLng = [startLat, startLng];
         // Calculate location based on [lat,long]
         const startLocation = await m.getLocation(startLatLng);
-        console.log("start", startLocation);
         // Found this on Leaflet plugins documentation, leaflet-image plugin.
         // Code from https://github.com/mapbox/leaflet-image/issues/113
         // Using import in html script recommended by Hirmes https://github.com/mapbox/leaflet-image/issues/113#issuecomment-505661878

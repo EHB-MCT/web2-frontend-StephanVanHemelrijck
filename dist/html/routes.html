@@ -6,19 +6,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../../docs/css/routes.css" />
         <link rel="stylesheet" href="../../docs/css/iconfont.css" />
-        <title>Routes</title>
+        <title>RoutExplore - Browse Routes</title>
     </head>
     <body>
         <header>
-            <div class="hidden" id="images"></div>
             <a href="#" class="icon-home" id="nav-logo">RoutExplore</a>
             <div class="container">
-                <h1 id="welcome">Routes</h1>
+                <h1 id="welcome">Browse Routes</h1>
             </div>
             <div class="dropdown">
                 <a href="#" id="username-nav" class="icon-user dropbtn"></a>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="#" class="icon-map" id="routes">Routes</a>
+                    <a href="#" class="icon-add" id="new-route">New Route</a>
+                    <a href="#" class="icon-map" id="routes">Browse Routes</a>
                     <a href="#" class="icon-directions_bike" id="my-routes">My Routes</a>
                     <a href="#" class="icon-star-full" id="fav-routes">Favorite Routes</a>
                     <a href="#" class="icon-bin2" id="delete">Delete User</a>
@@ -26,5 +26,9 @@
                 </div>
             </div>
         </header>
+        <main>
+            <div id="big-container"></div>
+        </main>
     </body>
+    <script src="/dist/js/routes.js"></script>
 </html>
