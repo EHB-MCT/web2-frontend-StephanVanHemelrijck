@@ -6,6 +6,15 @@ export function init() {
     main[0].addEventListener("click", (e) => {
         document.getElementById("myDropdown").classList.remove("show");
     });
+    // Logo
+    document.getElementById("nav-logo").addEventListener("click", (e) => {
+        if (!document.cookie) {
+            window.location.href = "../html/index.html";
+            return;
+        } else {
+            window.location.href = "../html/home.html";
+        }
+    });
 
     // Nav dropdown button
     document.getElementById("username-nav").addEventListener("click", (e) => {

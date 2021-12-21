@@ -61,7 +61,12 @@ async function addToFavorites(route) {
         }),
     })
         .then((res) => res.json())
-        .then((data) => alert("Saved route to favorites"));
+        .then((data) => {
+            if (!data.error || data.length == 0) {
+                alert("You already have this route as your favorite.");
+            }
+            alert("Saved route to favorites");
+        });
 }
 
 async function printRoutesByCity(city) {
