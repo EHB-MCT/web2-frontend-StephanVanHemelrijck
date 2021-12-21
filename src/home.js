@@ -166,6 +166,7 @@ function init() {
                 route_img_url: img.src,
             };
             saveRoute(data);
+            alert("Route saved!");
         });
     });
 }

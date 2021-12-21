@@ -4,15 +4,15 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../../docs/css/routes.css" />
+        <title>RoutExplore - My Routes</title>
+        <link rel="stylesheet" href="../../docs/css/my-routes.css" />
         <link rel="stylesheet" href="../../docs/css/iconfont.css" />
-        <title>RoutExplore - Browse Routes</title>
     </head>
     <body>
         <header>
             <a href="#" class="icon-home" id="nav-logo">RoutExplore</a>
             <div class="container">
-                <h1 id="welcome">Browse Routes</h1>
+                <h1 id="welcome">Browse My Routes</h1>
             </div>
             <div class="dropdown">
                 <a href="#" id="username-nav" class="icon-user dropbtn"></a>
@@ -39,15 +39,15 @@
                         <button type="submit" id="search">Search</button>
                     </div>
                     <div class="subchoice">
-                        <input type="text" name="location" id="favoritevalue" placeholder="Paste id of the route u want to favorite" />
+                        <input type="text" name="location" id="deletevalue" placeholder="Paste id of the route u want to delete" />
                     </div>
                     <div class="subchoice">
-                        <button type="submit" id="favorite">Favorite</button>
+                        <button type="submit" id="deleteBtn">Delete</button>
                     </div>
                 </form>
             </div>
             <div id="big-container"></div>
         </main>
     </body>
-    <script src="/dist/js/routes.js"></script>
+    <script src="../js/my-routes.js"></script>
 </html>

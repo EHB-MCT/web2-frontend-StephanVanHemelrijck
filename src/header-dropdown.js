@@ -1,6 +1,12 @@
 import * as cookie from "./cookie.js";
 
 export function init() {
+    // Click dropdown away
+    const main = document.getElementsByTagName("main");
+    main[0].addEventListener("click", (e) => {
+        document.getElementById("myDropdown").classList.remove("show");
+    });
+
     // Nav dropdown button
     document.getElementById("username-nav").addEventListener("click", (e) => {
         toggleDropdown();

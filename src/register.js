@@ -59,6 +59,7 @@ async function createUser() {
                 cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 cookie.setCookie("token", `${data.token}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("id", `${data.user_id}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 if (!data.error) {
                     window.location.href = "../html/home.html";
                 }
