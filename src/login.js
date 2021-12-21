@@ -68,7 +68,7 @@ function userLogin(email, password, rememberMe) {
                 cookie.setCookie("token", `${data.token}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 cookie.setCookie("id", `${data.user_id}`, { "max-age": timeUntillCookieExpiresInSeconds });
             } else {
-                timeUntillCookieExpiresInSeconds = 10; // Set to expire in 1 hr
+                timeUntillCookieExpiresInSeconds = 60 * 60 * 1; // Set to expire in 1 hr
                 cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
                 cookie.setCookie("token", `${data.token}`, { "max-age": timeUntillCookieExpiresInSeconds });

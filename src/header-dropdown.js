@@ -50,9 +50,7 @@ export function logOut() {
 }
 
 export async function deleteUser() {
-    console.log(document.cookie);
     const email = cookie.getCookie("email");
-    console.log(email);
     //web2-routexploreapi.herokuapp.com/users/delete
     await fetch("https://web2-routexploreapi.herokuapp.com/users/:email" + "?email=" + `${email}`, {
         method: "DELETE",

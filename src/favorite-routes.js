@@ -42,14 +42,12 @@ async function printFavoriteRoutes() {
                 ).innerHTML = `<h1 style="color:#FFFFFF; padding: 50px; text-shadow: 1px 1px black;">You have no routes...</h1>`;
                 return;
             } else {
-                console.log(data);
                 document.getElementById("big-container").innerHTML = "";
                 let htmlString = ``;
                 data.forEach((element) => {
                     fetch("https://web2-routexploreapi.herokuapp.com/routes/:route_id?" + "route_id=" + element.route_id)
                         .then((res) => res.json())
                         .then((data) => {
-                            console.log(data);
                             // Clear the loading message
                             // Capitalize username
                             const str = data.created_by;
@@ -76,7 +74,6 @@ async function printFavoriteRoutes() {
 }
 
 async function deleteFromFavorites(route) {
-    console.log(route);
     const user_id = cookie.getCookie("id");
     await fetch("https://web2-routexploreapi.herokuapp.com/routes/favorite_routes/:route_id" + "?route_id=" + route, {
         method: "DELETE",

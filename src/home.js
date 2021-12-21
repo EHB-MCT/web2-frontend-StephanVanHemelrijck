@@ -13,7 +13,6 @@ let map = m.initMap();
 const layergroup = L.layerGroup().addTo(map);
 let polyline;
 window.onload = function () {
-    console.log(document.cookie);
     if (!document.cookie) {
         alert("User not logged in, redirecting...");
         window.location.href = "../html/index.html";
@@ -105,7 +104,6 @@ function init() {
         const location = await m.getLatlng(startLocation);
         const lat = location.geometry.coordinates[1];
         const lng = location.geometry.coordinates[0];
-        console.log(lat, lng);
         // Fly to location
         map.flyTo(new L.LatLng(lat, lng), 14);
     });

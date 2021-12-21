@@ -63,7 +63,6 @@ async function printMyRoutesByCity(city) {
                 ).innerHTML = `<h1 style="color:#FFFFFF; padding: 50px; text-shadow: 1px 1px black;">You don't have any routes starting in this city...</h1>`;
                 return;
             } else {
-                console.log(data);
                 document.getElementById("big-container").innerHTML = "";
                 let htmlString = ``;
                 data.forEach((element) => {
@@ -103,7 +102,6 @@ async function printMyRoutes() {
                 ).innerHTML = `<h1 style="color:#FFFFFF; padding: 50px; text-shadow: 1px 1px black;">You have no routes...</h1>`;
                 return;
             } else {
-                console.log(data);
                 document.getElementById("big-container").innerHTML = "";
                 let htmlString = ``;
                 data.forEach((element) => {

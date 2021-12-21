@@ -100,7 +100,6 @@ async function printRoutes() {
     })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             if (!data || data.length == 0) {
                 document.getElementById(
                     "big-container"
