@@ -10,7 +10,10 @@ window.onload = async function () {
     personalizeHTML();
     document.getElementById("big-container").innerHTML = `<h1 style="color:#FFFFFF; padding: 50px; text-shadow: 1px 1px black">Loading Routes...</h1>`;
     await printRoutes();
-    document.getElementById("search").addEventListener("click", (e) => searchRoutes());
+    document.getElementById("search").addEventListener("click", (e) => {
+        e.preventDefault();
+        searchRoutes();
+    });
     document.getElementById("reset").addEventListener("click", printRoutes());
     document.getElementById("favorite").addEventListener("click", (e) => {
         e.preventDefault();
@@ -62,10 +65,11 @@ async function addToFavorites(route) {
     })
         .then((res) => res.json())
         .then((data) => {
-            if (!data.error || data.length == 0) {
+            if (data.error) {
                 alert("You already have this route as your favorite.");
+            } else {
+                alert("Saved route to favorites");
             }
-            alert("Saved route to favorites");
         });
 }
 

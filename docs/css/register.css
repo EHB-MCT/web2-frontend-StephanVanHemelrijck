@@ -49,6 +49,12 @@ main div h1 {
     font-weight: 700;
     color: var(--white);
 }
+#sec-question {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 1px 1px black;
+}
 
 #inputs {
     display: flex;

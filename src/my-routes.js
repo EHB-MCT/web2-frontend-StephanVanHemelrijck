@@ -10,7 +10,10 @@ window.onload = async function () {
     personalizeHTML();
     document.getElementById("big-container").innerHTML = `<h1 style="color:#FFFFFF; padding: 50px; text-shadow: 1px 1px black;">Loading Routes...</h1>`;
     await printMyRoutes();
-    document.getElementById("search").addEventListener("click", (e) => searchRoutes(e));
+    document.getElementById("search").addEventListener("click", (e) => {
+        e.preventDefault();
+        searchRoutes();
+    });
     document.getElementById("reset").addEventListener("click", printMyRoutes());
     document.getElementById("deleteBtn").addEventListener("click", (e) => {
         e.preventDefault();
@@ -32,8 +35,7 @@ function personalizeHTML() {
     document.getElementById("username-nav").innerHTML = userCapitalCase;
 }
 
-function searchRoutes(e) {
-    e.preventDefault();
+function searchRoutes() {
     // Assigning search value
     const city = document.getElementById("searchvalue").value;
     if (!city) {

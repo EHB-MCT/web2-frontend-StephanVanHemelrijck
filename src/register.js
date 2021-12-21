@@ -19,10 +19,12 @@ async function createUser() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const passwordConfirm = document.getElementById("password-confirm").value;
+    const sec_question = document.getElementById("sec-question-answer").getAttribute("placeholder");
+    const sec_question_answer = document.getElementById("sec-question-answer").value;
 
     // Validation input fields
     let inputs = document.getElementsByClassName("input");
-    if (!username || !email || !password || !passwordConfirm) {
+    if (!username || !email || !password || !passwordConfirm || !sec_question_answer) {
         let htmlString = `<p id="missing-message">Fill in the form, missing: <br>`;
         let htmlInputsMissing = " ";
         let htmlStringEnd = ` </p>`;
@@ -48,10 +50,13 @@ async function createUser() {
                 username: `${username}`,
                 email: `${email}`,
                 password: `${password}`,
+                security_question: `${sec_question}`,
+                security_question_answer: `${sec_question_answer}`,
             }),
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 if (data.error) {
                     document.getElementById("message-container").innerHTML = `<p id="error-message">${data.value} </p>`;
                 }
