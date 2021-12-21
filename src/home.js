@@ -94,7 +94,7 @@ function init() {
     // reset
     document.getElementById("reset").addEventListener("click", (e) => {
         // refresh page = delete markers?
-        window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+        window.location.href = window.location.href;
     });
     // search
     document.getElementById("search").addEventListener("click", async (e) => {

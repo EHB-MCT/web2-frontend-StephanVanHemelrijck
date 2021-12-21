@@ -11,6 +11,10 @@
     --form-width: 70%;
 }
 
+#homebtn {
+    text-decoration: none;
+}
+
 body {
     background-image: url(../../assets/img/cycling-outdoor-sunset-art.jpg);
     background-repeat: no-repeat;
