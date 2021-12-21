@@ -40,7 +40,7 @@ main {
 #container {
     max-width: 410px;
     height: 320px;
-    margin: 75px 20px 20px 20px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     border: 5px solid var(--white);
@@ -115,4 +115,52 @@ main {
     border-color: var(--blue-hover);
     color: var(--blue-hover);
     overflow: hidden;
+}
+
+/* Search field */
+.small-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#form {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+#form div {
+    padding: 5px 5px 30px;
+}
+
+input[type="text"] {
+    background-color: var(--black);
+    color: var(--white);
+    font-size: var(--text);
+    padding: 10px 5px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+select:focus,
+input[type="text"]:focus {
+    border: 2px solid var(--blue);
+}
+
+button[type="submit"] {
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 12px 20px;
+    color: var(--white);
+    background-color: var(--blue);
+    border: 0 solid;
+    border-radius: 8px;
+    text-shadow: 1px 1px var(--black);
+}
+
+/* Hovers */
+button[type="submit"]:hover {
+    background-color: var(--blue-hover);
+    transition: 0.2s;
 }
