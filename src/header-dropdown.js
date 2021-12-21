@@ -11,22 +11,21 @@ export function init() {
     document.getElementById("username-nav").addEventListener("click", (e) => {
         toggleDropdown();
     });
-    const githubpagesPath = "/web2-frontend-StephanVanHemelrijck";
     // New Route
     document.getElementById("new-route").addEventListener("click", (e) => {
-        window.location.href = window.location.origin + githubpagesPath + "/dist/html/home.html";
+        window.location.href = "../html/home.html";
     });
     // Routes
     document.getElementById("routes").addEventListener("click", (e) => {
-        window.location.href = window.location.origin + githubpagesPath + "/dist/html/routes.html";
+        window.location.href = "../html/routes.html";
     });
     // My Routes
     document.getElementById("my-routes").addEventListener("click", (e) => {
-        window.location.href = window.location.origin + githubpagesPath + "/dist/html/my-routes.html";
+        window.location.href = "../html/my-routes.html";
     });
     // Favorite Routes
     document.getElementById("fav-routes").addEventListener("click", (e) => {
-        window.location.href = window.location.origin + githubpagesPath + "/dist/html/favorite-routes.html";
+        window.location.href = "../html/favorite-routes.html";
     });
     // Delete User
     document.getElementById("delete").addEventListener("click", (e) => {
