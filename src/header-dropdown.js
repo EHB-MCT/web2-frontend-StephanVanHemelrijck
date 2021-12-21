@@ -26,7 +26,7 @@ export function init() {
     });
     // Favorite Routes
     document.getElementById("fav-routes").addEventListener("click", (e) => {
-        window.location.href = window.location.origin + "/dist/html/fav-routes.html";
+        window.location.href = window.location.origin + "/dist/html/favorite-routes.html";
     });
     // Delete User
     document.getElementById("delete").addEventListener("click", (e) => {

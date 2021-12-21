@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>RoutExplore - Favorite routes</title>
+        <link rel="stylesheet" href="../../docs/css/my-routes.css" />
+        <link rel="stylesheet" href="../../docs/css/iconfont.css" />
+    </head>
+    <body>
+        <header>
+            <a href="#" class="icon-home" id="nav-logo">RoutExplore</a>
+            <div class="container">
+                <h1 id="welcome">Browse My Favorite Routes</h1>
+            </div>
+            <div class="dropdown">
+                <a href="#" id="username-nav" class="icon-user dropbtn"></a>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" class="icon-add" id="new-route">New Route</a>
+                    <a href="#" class="icon-map" id="routes">Browse Routes</a>
+                    <a href="#" class="icon-directions_bike" id="my-routes">My Routes</a>
+                    <a href="#" class="icon-star-full" id="fav-routes">Favorite Routes</a>
+                    <a href="#" class="icon-bin2" id="delete">Delete User</a>
+                    <a href="#" class="icon-exit" id="logout">Log Out</a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="small-container">
+                <form action="" id="form">
+                    <div class="subchoice">
+                        <button type="submit" id="reset">Reset</button>
+                    </div>
+                    <div class="subchoice">
+                        <input type="text" name="location" id="searchvalue" placeholder="Search a route by city" />
+                    </div>
+                    <div class="subchoice">
+                        <button type="submit" id="search">Search</button>
+                    </div>
+                    <div class="subchoice">
+                        <input type="text" name="location" id="deletevalue" placeholder="Paste id of the route u want to favorite" />
+                    </div>
+                    <div class="subchoice">
+                        <button type="submit" id="deleteBtn">Delete</button>
+                    </div>
+                </form>
+            </div>
+            <div id="big-container"></div>
+        </main>
+    </body>
+    <script src="../js/favorite-routes.js"></script>
+</html>

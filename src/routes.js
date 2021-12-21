@@ -8,7 +8,7 @@ window.onload = async function () {
     }
     header.init();
     personalizeHTML();
-    document.getElementById("big-container").innerHTML = `<h1 style="color:#FFFFFF; padding: 50px;">Loading Routes...</h1>`;
+    document.getElementById("big-container").innerHTML = `<h1 style="color:#FFFFFF; padding: 50px; text-shadow: 1px 1px black">Loading Routes...</h1>`;
     await printRoutes();
     document.getElementById("search").addEventListener("click", (e) => searchRoutes());
     document.getElementById("reset").addEventListener("click", printRoutes());
@@ -100,28 +100,35 @@ async function printRoutes() {
     })
         .then((res) => res.json())
         .then((data) => {
-            document.getElementById("big-container").innerHTML = "";
-            let htmlString = ``;
-            data.forEach((element) => {
-                // Clear the loading message
-                // Capitalize username
-                const str = element.created_by;
-                const userName = element.created_by.charAt(0).toUpperCase() + str.slice(1);
-                htmlString = ` <div id="container">
-                <p id="route-id">Route ID: ${element.route_id}</p>
-                <div id="container-img">
-                <img src="${element.route_img_url}" alt="${element.route_name}" />
-                </div>
-                <div id="description">
-                <div id="names">
-                <p id="routename"><span>Route:</span> ${element.route_name}</p>
-                <p id="creatorname"><span>Created by:</span> ${userName}</p>
-                <div id="${element.route_id}" class="icon-star-full addtofav"></div>
-                </div>
-                <p id="startpoint"><span>Startpoint:</span> ${element.route_start_location.city}, ${element.route_start_location.state}, ${element.route_start_location.country}</p>
-                </div>
-                </div>`;
-                document.getElementById("big-container").insertAdjacentHTML("afterbegin", htmlString);
-            });
+            console.log(data);
+            if (!data || data.length == 0) {
+                document.getElementById(
+                    "big-container"
+                ).innerHTML = `<h1 style="color:#FFFFFF; padding: 50px; text-shadow: 1px 1px black;">There are currently no routes to show...</h1>`;
+            } else {
+                document.getElementById("big-container").innerHTML = "";
+                let htmlString = ``;
+                data.forEach((element) => {
+                    // Clear the loading message
+                    // Capitalize username
+                    const str = element.created_by;
+                    const userName = element.created_by.charAt(0).toUpperCase() + str.slice(1);
+                    htmlString = ` <div id="container">
+                    <p id="route-id">Route ID: ${element.route_id}</p>
+                    <div id="container-img">
+                    <img src="${element.route_img_url}" alt="${element.route_name}" />
+                    </div>
+                    <div id="description">
+                    <div id="names">
+                    <p id="routename"><span>Route:</span> ${element.route_name}</p>
+                    <p id="creatorname"><span>Created by:</span> ${userName}</p>
+                    <div id="${element.route_id}" class="icon-star-full addtofav"></div>
+                    </div>
+                    <p id="startpoint"><span>Startpoint:</span> ${element.route_start_location.city}, ${element.route_start_location.state}, ${element.route_start_location.country}</p>
+                    </div>
+                    </div>`;
+                    document.getElementById("big-container").insertAdjacentHTML("afterbegin", htmlString);
+                });
+            }
         });
 }

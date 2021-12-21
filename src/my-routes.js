@@ -2,6 +2,10 @@ import * as cookie from "./cookie.js";
 import * as header from "./header-dropdown.js";
 
 window.onload = async function () {
+    if (!document.cookie) {
+        alert("User not logged in, redirecting...");
+        window.location.href = "../html/index.html";
+    }
     header.init();
     personalizeHTML();
     document.getElementById("big-container").innerHTML = `<h1 style="color:#FFFFFF; padding: 50px; text-shadow: 1px 1px black;">Loading Routes...</h1>`;

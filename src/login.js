@@ -10,12 +10,14 @@ window.onload = function () {
 };
 
 function initFields() {
+    const chkbx = document.getElementById("checkbox-remember-me");
     document.getElementById("login").addEventListener("click", async (e) => {
         e.preventDefault();
 
+        let rememberme = chkbx.checked;
         let credentials = await checkInput();
         if (credentials != undefined) {
-            userLogin(credentials[0], credentials[1]);
+            userLogin(credentials[0], credentials[1], rememberme);
         }
     });
 }
@@ -44,7 +46,7 @@ function checkInput() {
     return [email, password];
 }
 
-function userLogin(email, password) {
+function userLogin(email, password, rememberMe) {
     fetch("https://web2-routexploreapi.herokuapp.com/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -58,11 +60,20 @@ function userLogin(email, password) {
             }
             document.getElementById("message-container").innerHTML = `<p id="error-message">${data.message} </p>`;
             // Storing user info in cookies
-            const timeUntillCookieExpiresInSeconds = 1 * (60 * 60); // Set to expire in 1 hr
-            cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
-            cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
-            cookie.setCookie("token", `${data.token}`, { "max-age": timeUntillCookieExpiresInSeconds });
-            cookie.setCookie("id", `${data.user_id}`, { "max-age": timeUntillCookieExpiresInSeconds });
+            let timeUntillCookieExpiresInSeconds;
+            if (rememberMe) {
+                timeUntillCookieExpiresInSeconds = 60 * 60 * 24 * 7; // Set to expire in 1 week
+                cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("token", `${data.token}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("id", `${data.user_id}`, { "max-age": timeUntillCookieExpiresInSeconds });
+            } else {
+                timeUntillCookieExpiresInSeconds = 10; // Set to expire in 1 hr
+                cookie.setCookie("username", `${data.username}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("email", `${data.email}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("token", `${data.token}`, { "max-age": timeUntillCookieExpiresInSeconds });
+                cookie.setCookie("id", `${data.user_id}`, { "max-age": timeUntillCookieExpiresInSeconds });
+            }
             if (!data.error) {
                 document.getElementById("message-container").innerHTML = `<p id="error-message">Logging in...</p>`;
                 window.location.href = "../html/home.html";
