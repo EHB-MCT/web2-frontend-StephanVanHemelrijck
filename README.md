@@ -6,6 +6,8 @@ Reminder that this repository, and my website, is not being used for commercial 
 
 Backend repository can be found [here](https://github.com/EHB-MCT/web2-backend-StephanVanHemelrijck)
 
+## Account
+
 ***Note: You will need an account to use my site. You can use a fake email and any type of password, even 1 character ones.***
 
 However if you don't want to create one yourself. Feel free to use the one below.
