@@ -6,7 +6,7 @@ import * as m from "./map.js";
 const mapbox_api_key = "pk.eyJ1Ijoic3VlemhvbyIsImEiOiJja3hjMGUybm4wZGc3MnVtbThhazd2ZWk0In0.vZFkONLp_lXJZK15bC0xCg";
 
 // GRAPHHOPPER API KEY
-const graphhopper_api_key = "0e189b71-b607-4cb2-97b4-5678175d8fc6";
+const graphhopper_api_key = "55878506-9c1f-4b93-9c8f-a625b7720301";
 
 // Map layers
 let map = m.initMap();
